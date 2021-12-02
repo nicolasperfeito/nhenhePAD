@@ -69,7 +69,7 @@ class Janela(tk.Frame):
         # Título da janela principal.
         master.title('CRUD HOW-IV')
 
-        # Tamanho da janela principal.
+        # Tamanho da janela principal (definido em comando anterior).
         master.geometry(tamanho)
 
         # Instanciando a conexão com o banco.
@@ -157,7 +157,7 @@ class Janela(tk.Frame):
 
         # Inserindo os dados do banco no treeview.
         for row in self.banco.consultar_registros():
-            self.treeview.insert('', 'end', text=row[0], values=(row[1], row[2], row[3], row[4], row[5]))
+            self.treeview.insert('', 'end', text=row[0], values=(row[1], row[2], row[3], row[4], row[5], row[6]))
 
         self.treeview.pack(fill=tk.BOTH, expand=True)
 
@@ -169,12 +169,12 @@ class Janela(tk.Frame):
 
     def adicionar_registro(self):
         # Coletando os valores.
-        nome        = self.entry_nome.get()
-        cpf         = self.entry_cpf.get()
-        telefone    = self.entry_telefone.get()
-        email       = self.entry_email.get()
-        endereco    = self.entry_endereco.get()
-        necessidade = self.entry_necessidade.get()
+        nome=self.entry_nome.get()
+        cpf=self.entry_cpf.get()
+        telefone=self.entry_telefone.get()
+        email=self.entry_email.get()
+        endereco=self.entry_endereco.get()
+        necessidade=self.entry_necessidade.get()
 
     def excluir_registro(self):
         # Verificando se algum item está selecionado.
