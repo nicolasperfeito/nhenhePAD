@@ -62,8 +62,8 @@ class Janela(tk.Frame):
         """Construtor"""
         super().__init__(master)
         # Coletando informações do monitor
-        largura = round(self.winfo_screenwidth() / 1.5)
-        altura = round(self.winfo_screenheight() / 2)
+        largura = round(self.winfo_screenwidth() / 2)
+        altura = round(self.winfo_screenheight() / 3)
         tamanho = ('%sx%s' % (largura, altura))
 
         # Título da janela principal.
@@ -84,31 +84,31 @@ class Janela(tk.Frame):
     def criar_widgets(self):
         # Containers.
         frame1 = tk.Frame(self)
-        frame1.pack(side=tk.TOP, fill=tk.BOTH, padx=5, pady=5)
+        frame1.pack(side=tk.TOP, fill=tk.BOTH, padx=3, pady=3)
 
         frame2 = tk.Frame(self)
         frame2.pack(fill=tk.BOTH, expand=True)
 
         frame3 = tk.Frame(self)
-        frame3.pack(side=tk.BOTTOM, padx=5)
+        frame3.pack(side=tk.BOTTOM, padx=3)
 
         # Labels > nome, cpf, telefone, email, endereco, necessidade
-        label_documento = tk.Label(frame1, text='Nome')
+        label_documento = tk.Label(frame1, text='Nome', width=20)
         label_documento.grid(row=0, column=0)
 
-        label_assunto = tk.Label(frame1, text='CPF')
+        label_assunto = tk.Label(frame1, text='CPF', width=20)
         label_assunto.grid(row=0, column=1)
 
-        label_recebido = tk.Label(frame1, text='Telefone')
+        label_recebido = tk.Label(frame1, text='Telefone', width=20)
         label_recebido.grid(row=0, column=2)
 
-        label_recebido = tk.Label(frame1, text='E-mail')
+        label_recebido = tk.Label(frame1, text='E-mail', width=20)
         label_recebido.grid(row=0, column=3)
 
-        label_recebido = tk.Label(frame1, text='Endereço')
+        label_recebido = tk.Label(frame1, text='Endereço', width=20)
         label_recebido.grid(row=0, column=4)
 
-        label_recebido = tk.Label(frame1, text='Necessidade')
+        label_recebido = tk.Label(frame1, text='Necessidade', width=20)
         label_recebido.grid(row=0, column=5)
 
         # Entrada de texto.
@@ -146,6 +146,14 @@ class Janela(tk.Frame):
         self.treeview.heading('#4', text='Telefone')
         self.treeview.heading('#5', text='Endereço')
         self.treeview.heading('#6', text='Necessidade')
+
+        #Ajustar tamanho das colunas
+        self.treeview.column(0, width=100)
+        self.treeview.column(1, width=100)
+        self.treeview.column(2, width=100)
+        self.treeview.column(3, width=100)
+        self.treeview.column(4, width=100)
+        self.treeview.column(5, width=100)
 
         # Inserindo os dados do banco no treeview.
         for row in self.banco.consultar_registros():
