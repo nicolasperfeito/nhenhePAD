@@ -13,13 +13,13 @@ class ConectarDB:
 
     def criar_tabela(self):
         try:
-            self.cur.execute('''CREATE TABLE IF NOT EXISTS assist (
+            self.cur.execute(CREATE TABLE IF NOT EXISTS assist (
                 nome TEXT,
                 cpf TEXT,
                 telefone TEXT,
                 email TEXT,
                 endereco TEXT,
-                necessidade TEXT)''')
+                necessidade TEXT))
         except Exception as e:
             print('[x] Falha ao criar tabela: %s [x]' % e)
         else:
@@ -28,7 +28,7 @@ class ConectarDB:
     def inserir_registro(self, nome, cpf, telefone, email, endereco, necessidade):
         try:
             self.cur.execute(
-                '''INSERT INTO assist VALUES (?, ?, ?, ?, ?, ?)''', (nome, cpf, telefone, email, endereco, necessidade,))
+                INSERT INTO assist VALUES (nome, cpf, telefone, email, endereco, necessidade)
         except Exception as e:
             print('\n[x] Falha ao inserir registro [x]\n')
             print('[x] Revertendo operação (rollback) %s [x]\n' % e)
